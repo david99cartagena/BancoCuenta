@@ -84,11 +84,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 		try {
 
-			Usuario cuentaSaved = usuarioDao.save(usuario);
+			Usuario usuarioSaved = usuarioDao.save(usuario);
 
-			if (cuentaSaved != null) {
+			if (usuarioSaved != null) {
 
-				list.add(cuentaSaved);
+				list.add(usuarioSaved);
 				response.getUsuarioResponse().setUsuario(list);
 				response.setMetadata("Respuesta Ok", "00", "Usuario Guardado");
 
@@ -123,7 +123,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 			if (usuarioSearch.isPresent()) {
 
 				// Se actualiza el usuario
-				usuarioSearch.get().setUsuarioid(usuario.getUsuarioid());
+				usuarioSearch.get().setIdUsuario(usuario.getIdUsuario());
 				usuarioSearch.get().setNombre(usuario.getNombre());
 				usuarioSearch.get().setApellido(usuario.getApellido());
 

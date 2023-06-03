@@ -19,6 +19,7 @@ import com.company.banco.services.IUsuarioService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
+
 public class UsuarioRestController {
 
 	@Autowired
@@ -30,7 +31,7 @@ public class UsuarioRestController {
 	 * @return
 	 */
 	@GetMapping("/usuarios")
-	public ResponseEntity<UsuarioResponseRest> searchCuentas() {
+	public ResponseEntity<UsuarioResponseRest> searchUsuarios() {
 
 		ResponseEntity<UsuarioResponseRest> response = service.search();
 		return response;
@@ -43,9 +44,8 @@ public class UsuarioRestController {
 	 * @param id
 	 * @return
 	 */
-
 	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponseRest> searchCuentasById(@PathVariable Long id) {
+	public ResponseEntity<UsuarioResponseRest> searchUsuariosById(@PathVariable Long id) {
 
 		ResponseEntity<UsuarioResponseRest> response = service.searchById(id);
 		return response;
@@ -60,7 +60,7 @@ public class UsuarioRestController {
 	 */
 
 	@PostMapping("/usuarios")
-	public ResponseEntity<UsuarioResponseRest> searchCuentasById(@RequestBody Usuario usuario) {
+	public ResponseEntity<UsuarioResponseRest> searchUsuariosById(@RequestBody Usuario usuario) {
 
 		ResponseEntity<UsuarioResponseRest> response = service.save(usuario);
 		return response;

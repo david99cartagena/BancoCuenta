@@ -123,7 +123,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 			if (usuarioSearch.isPresent()) {
 
 				// Se actualiza el usuario
-				usuarioSearch.get().setIdUsuario(usuario.getIdUsuario());
+//				usuarioSearch.get().setIdUsuario(usuario.getIdUsuario());
 				usuarioSearch.get().setNombre(usuario.getNombre());
 				usuarioSearch.get().setApellido(usuario.getApellido());
 

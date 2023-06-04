@@ -28,16 +28,15 @@ public class CuentaServiceImpl implements ICuentaService {
 
 		try {
 
-		List<Cuenta> cuenta = (List<Cuenta>) cuentaDao.findAll();
-		response.getCuentaResponse().setCuenta(cuenta);
-		response.setMetadata("Respuesta Ok", "00", "Respuesta Exitosa");
+			List<Cuenta> cuenta = (List<Cuenta>) cuentaDao.findAll();
+			response.getCuentaResponse().setCuenta(cuenta);
+			response.setMetadata("Respuesta Ok", "00", "Respuesta Exitosa");
 
 		} catch (Exception e) {
 
-		response.setMetadata("Respuesta No Ok", "-1", "Error al Consultar");
-		e.getStackTrace();
-		return new ResponseEntity<CuentaResponseRest>(response,
-		HttpStatus.INTERNAL_SERVER_ERROR);
+			response.setMetadata("Respuesta No Ok", "-1", "Error al Consultar");
+			e.getStackTrace();
+			return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.OK);
@@ -50,30 +49,28 @@ public class CuentaServiceImpl implements ICuentaService {
 		CuentaResponseRest response = new CuentaResponseRest();
 		List<Cuenta> list = new ArrayList<>();
 
-		// try {
-		// Optional<Cuenta> cuenta = cuentaDao.findById(id);
+		try {
+			Optional<Cuenta> cuenta = cuentaDao.findById(id);
 
-		// if (cuenta.isPresent()) {
+			if (cuenta.isPresent()) {
 
-		// list.add(cuenta.get());
-		// response.getCuentaResponse().setCuenta(list);
-		// response.setMetadata("Respuesta Ok", "00", "Cuenta Encontrada");
+				list.add(cuenta.get());
+				response.getCuentaResponse().setCuenta(list);
+				response.setMetadata("Respuesta Ok", "00", "Cuenta Encontrada");
 
-		// } else {
+			} else {
 
-		// response.setMetadata("Respuesta No Ok", "-1", "Cuenta No Encontrada");
-		// return new ResponseEntity<CuentaResponseRest>(response,
-		// HttpStatus.NOT_FOUND);
+				response.setMetadata("Respuesta No Ok", "-1", "Cuenta No Encontrada");
+				return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.NOT_FOUND);
 
-		// }
+			}
 
-		// } catch (Exception e) {
+		} catch (Exception e) {
 
-		// response.setMetadata("Respuesta No Ok", "-1", "Erro al consultar por Id");
-		// e.getStackTrace();
-		// return new ResponseEntity<CuentaResponseRest>(response,
-		// HttpStatus.INTERNAL_SERVER_ERROR);
-		// }
+			response.setMetadata("Respuesta No Ok", "-1", "Erro al consultar por Id");
+			e.getStackTrace();
+			return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
 		return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.OK);
 	}
@@ -85,31 +82,29 @@ public class CuentaServiceImpl implements ICuentaService {
 		CuentaResponseRest response = new CuentaResponseRest();
 		List<Cuenta> list = new ArrayList<>();
 
-		// try {
+		try {
 
-		// Cuenta cuentaSaved = cuentaDao.save(cuenta);
+			Cuenta cuentaSaved = cuentaDao.save(cuenta);
 
-		// if (cuentaSaved != null) {
+			if (cuentaSaved != null) {
 
-		// list.add(cuentaSaved);
-		// response.getCuentaResponse().setCuenta(list);
-		// response.setMetadata("Respuesta Ok", "00", "Cuenta Guardada");
+				list.add(cuentaSaved);
+				response.getCuentaResponse().setCuenta(list);
+				response.setMetadata("Respuesta Ok", "00", "Cuenta Guardada");
 
-		// } else {
+			} else {
 
-		// response.setMetadata("Respuesta No Ok", "-1", "Cuenta No Guardada");
-		// return new ResponseEntity<CuentaResponseRest>(response,
-		// HttpStatus.BAD_REQUEST);
+				response.setMetadata("Respuesta No Ok", "-1", "Cuenta No Guardada");
+				return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.BAD_REQUEST);
 
-		// }
+			}
 
-		// } catch (Exception e) {
+		} catch (Exception e) {
 
-		// response.setMetadata("Respuesta No Ok", "-1", "Error al grabar Cuenta");
-		// e.getStackTrace();
-		// return new ResponseEntity<CuentaResponseRest>(response,
-		// HttpStatus.INTERNAL_SERVER_ERROR);
-		// }
+			response.setMetadata("Respuesta No Ok", "-1", "Error al grabar Cuenta");
+			e.getStackTrace();
+			return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
 		return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.OK);
 	}
@@ -173,18 +168,17 @@ public class CuentaServiceImpl implements ICuentaService {
 
 		CuentaResponseRest response = new CuentaResponseRest();
 
-		// try {
+		try {
 
-		// cuentaDao.deleteById(id);
-		// response.setMetadata("Respuesta Ok", "00", "Cuenta Eliminada");
+			cuentaDao.deleteById(id);
+			response.setMetadata("Respuesta Ok", "00", "Cuenta Eliminada");
 
-		// } catch (Exception e) {
+		} catch (Exception e) {
 
-		// response.setMetadata("Respuesta No Ok", "-1", "Error al Eliminar");
-		// e.getStackTrace();
-		// return new ResponseEntity<CuentaResponseRest>(response,
-		// HttpStatus.INTERNAL_SERVER_ERROR);
-		// }
+			response.setMetadata("Respuesta No Ok", "-1", "Error al Eliminar");
+			e.getStackTrace();
+			return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
 		return new ResponseEntity<CuentaResponseRest>(response, HttpStatus.OK);
 	}
